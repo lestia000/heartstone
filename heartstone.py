@@ -43,8 +43,7 @@ def getText(obj):
 
 
 def insertData(type, cards):
-    global conn
-    global cursor
+    global conn,cursor
     retries = 3
     retry_delay = 5
     for retry in range(retries):
@@ -131,4 +130,6 @@ if __name__ == "__main__":
                 cards.append(card.getdata())
             print(character, card_type)
             insertData(character+"_"+en_card_types[card_type], cards)
+    conn.close()
+    cursor.close()
     driver.quit()
